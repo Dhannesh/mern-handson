@@ -2,10 +2,12 @@ import express from "express";
 import dotenv from "dotenv";
 import router from "./routes/jobRoutes.js";
 import { errorHandler } from "./middleware/errorHandler.js";
+import { connectDB } from "./config/db.js";
+
 dotenv.config();
 
 const port = process.env.PORT || 3000;
-
+connectDB();
 const app = express();
 
 app.use(express.json());
