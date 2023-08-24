@@ -1,21 +1,22 @@
 import express from "express";
+import {
+  getJobs,
+  setJobs,
+  updateJob,
+  deleteJob,
+} from "../controllers/jobController.js";
 
 const router = express.Router();
 
-router.get("/", (req, res) => {
-  res.status(200).send({ message: "Job will show" });
-});
+router.route("/").get(getJobs).post(setJobs);
+// router.get("/", getJobs);
 
-router.post("/", (req, res) => {
-  res.status(200).send({ message: "Job will create" });
-});
+// router.post("/", setJobs);
 
-router.put("/:id", (req, res) => {
-  res.status(200).send({ message: `Job will update ${req.params.id}` });
-});
+router.route("/:id").put(updateJob).delete(deleteJob);
 
-router.delete("/:id", (req, res) => {
-  res.status(200).send({ message: `Job will delete ${req.params.id}` });
-});
+// router.put("/:id", updateJob);
+
+// router.delete("/:id", deleteJob);
 
 export default router;
